@@ -354,7 +354,7 @@ graph export "$fig/Anscombe1973_Figs.png", replace width(1200)
   - 数据生成过程 (DGP) 为 $y=10+0.5 x+e$, 
   - 其中, $x$ 和 $e$ 均来自标准正态分布, 彼此独立。
 - **S2:** 从 $S_{0}$ 中随机抽取 $n=50$ 个观察值, 形成一组抽样样本 (Sample), 
-  - 执行 OLS 估计, 记录 $\hat{\beta}$ 和 $\small\operatorname{se}(\hat{\beta})$
+  - 执行 OLS 估计, 记录 $\hat{\beta}$ 和 $\operatorname{se}(\hat{\beta})$
   
 - **S3:** 重复第二步 $K=1000$ 次，得到 $\hat{\boldsymbol{\beta}}_j = \{\hat{\beta}_1, \hat{\beta}_2, \cdots, \hat{\beta}_K\}$。
 
@@ -490,7 +490,7 @@ $$
 
 --- - --
 <!-- backgroundColor: #FFFFF9 -->
-**Raw:** $\small\qquad\qquad\quad y_{it} = \alpha_i + x_{it}\beta + \varepsilon_{it}$ 
+**Raw:** $\qquad\qquad\quad y_{it} = \alpha_i + x_{it}\beta + \varepsilon_{it}$ 
  <!--$D_i = 1\ \text{for firm}\ i$ and $0$ otherwise-->
 
 **De-meaned:** $y_{it} -\bar{y}_i= (x_{it}-\bar{x}_i)\beta + (\varepsilon_{it}-\bar{\varepsilon}_i)$
@@ -1231,13 +1231,13 @@ $Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$ $\ \ \Leftrightarrow$ $\ \ \til
 ![](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/Lianxh_装饰黄线.png)
 
 `reg Y X2` 
-`predict eY, res` &rarr; $\small\ \ \ \tilde{Y} = A + {\color{blue}{B}}$
+`predict eY, res` &rarr; $\ \ \ \tilde{Y} = A + {\color{blue}{B}}$
 
 `reg X1 X2` 
 `predict eX1, res` &rarr; $\tilde{X}_1 = F + {\color{blue}{B}}$
 ![](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/Lianxh_装饰黄线.png)
 
-`reg eY eX1` &rarr; `dis _b[eX1]` = $\small{\color{red}{\hat{\beta}_1}}$ &rarr; ${\color{blue}{B}}$
+`reg eY eX1` &rarr; `dis _b[eX1]` = ${\color{red}{\hat{\beta}_1}}$ &rarr; ${\color{blue}{B}}$
 
 ![bg left:40% w:400](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/OLS-venn-01.png)
 
@@ -1249,9 +1249,9 @@ $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarr
 
 - 事实上，只需从 $X_1$ 中去除  (partial out) $X_2$ 的影响，得到 $\tilde{X}_1$，进而用 $Y$ 对 $\tilde{X}_1$ 进行回归即可。即，如下回归都是等价的：
   
-  - `reg` $\tilde{Y}$ on $\small\tilde{X}_1$
-  - `reg` ${Y}$ on $\small\tilde{X}_1$
-  - `reg` ${Y}$ on $\small{X}_1, {X}_2$
+  - `reg` $\tilde{Y}$ on $\tilde{X}_1$
+  - `reg` ${Y}$ on $\tilde{X}_1$
+  - `reg` ${Y}$ on ${X}_1, {X}_2$
 
 ![bg left:40% w:400](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/OLS-venn-01.png)
 
@@ -1261,13 +1261,13 @@ $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarr
 ### 几种典型设定 - 1
 $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
 
-- $\small\bf{X_2} = \bf{1}$，去除样本均值 &emsp; `reg y x`
+- $\bf{X_2} = \bf{1}$，去除样本均值 &emsp; `reg y x`
   
-- $\small{\bf{X_2}} = Trend_t$，去除时间趋势
+- ${\bf{X_2}} = Trend_t$，去除时间趋势
   - `reg y x  c.year`
-- $\small{\bf{X}}_{{\bf{2}}it} = \alpha_i = \sum_1^N \alpha_i D_i$，去除个体效应
+- ${\bf{X}}_{{\bf{2}}it} = \alpha_i = \sum_1^N \alpha_i D_i$，去除个体效应
   -  `reg y x i.id` or `xtreg y x, fe`
-- $\small{\bf{X}}_{{\bf{2}}it} = \lambda_t= \sum_1^T \lambda_t D_t$，去除时间效应 
+- ${\bf{X}}_{{\bf{2}}it} = \lambda_t= \sum_1^T \lambda_t D_t$，去除时间效应 
   - `reg y x i.year` or `areg y x, ab(year)`
 
 --- - --
@@ -1275,12 +1275,12 @@ $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarr
 ### 几种典型设定 - 2
 $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
 
-- $\small{\bf{X}}_{{\bf{2}}it} = \alpha_i + \lambda_t$，双向固定效应 &rarr; DID
+- ${\bf{X}}_{{\bf{2}}it} = \alpha_i + \lambda_t$，双向固定效应 &rarr; DID
   - `. reghdfe y x, absorb(id year)` or `xtreg y x i.year, fe`
   
-- $\small{\bf{X}}_{{\bf{2}}sjit} = \alpha_s + \alpha_j + \alpha_i + \lambda_t$，多维固定效应
+- ${\bf{X}}_{{\bf{2}}sjit} = \alpha_s + \alpha_j + \alpha_i + \lambda_t$，多维固定效应
   - `. reghdfe y x1 x2, absorb(province industry firm year)`
-- $\small{\bf{X}}_{{\bf{2}}jt} = Ind_j + \lambda_t + Ind_j\times \lambda_t$，交互固定效应 
+- ${\bf{X}}_{{\bf{2}}jt} = Ind_j + \lambda_t + Ind_j\times \lambda_t$，交互固定效应 
   - `. reghdfe y x, absorb(industry year industry#year)`
 
 
@@ -1295,7 +1295,7 @@ $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarr
 
 - **真实模型：** $Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$
 - &#x2753; 如果不控制 $x_2$，即 
-  - `reg Y X1` $\small\iff$ $Y = X_1\theta_1 + \underbrace{{\color{red}{\varepsilon}}}_{X_2\beta_2+u}$
+  - `reg Y X1` $\iff$ $Y = X_1\theta_1 + \underbrace{{\color{red}{\varepsilon}}}_{X_2\beta_2+u}$
   - $\hat{\theta}_1 \neq \beta_1$
 --- - --
 
@@ -1314,7 +1314,7 @@ $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarr
 
 > :cat: 模型设定 (TWFE)
 
-$$\small
+$$
 \begin{aligned}
 Y_{s t}=& \alpha+\beta_{p} \ln \left(1-M T R 90_{s t-3}\right)+\beta_{c} \ln \left(1-\operatorname{Corp} . \mathrm{MTR}_{s t-3}\right) \\
 &+\gamma \mathbb{X}_{s t}+\delta_{t}+\delta_{s}+\varepsilon_{s t} \quad \text{(3)}
