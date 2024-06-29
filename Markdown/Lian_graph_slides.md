@@ -342,8 +342,7 @@ graph export "$fig/Anscombe1973_Figs.png", replace width(1200)
 
 - 单次抽样具有随机性 (原因？)
 - 然而，如果抽样很多次，如 $K=1000$ 次，取它们的均值，$E[\hat{\beta}]$，可以很大程度上消除随机误差的影响
-  
-- 这个均值应该接近真实值：$E[\hat{\beta}]={\beta}_0$
+- 这个均值应该接近真实值：$E[\hat{\beta}] = {\beta}_0$
 
 --- - --
 
