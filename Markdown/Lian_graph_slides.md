@@ -341,7 +341,7 @@ graph export "$fig/Anscombe1973_Figs.png", replace width(1200)
 <br>
 
 - 单次抽样具有随机性 (原因？)
-- 然而，如果抽样很多次，如 $\small K=1000$ 次，取它们的均值，$\small E[\hat{\beta}]$，可以很大程度上消除随机误差的影响
+- 然而，如果抽样很多次，如 $K=1000$ 次，取它们的均值，$\small E[\hat{\beta}]$，可以很大程度上消除随机误差的影响
   
 - 这个均值应该接近真实值：$\small E[\hat{\beta}]={\beta}_0$
 
@@ -354,7 +354,7 @@ graph export "$fig/Anscombe1973_Figs.png", replace width(1200)
   - 数据生成过程 (DGP) 为 $\small y=10+0.5 x+e$, 
   - 其中, $x$ 和 $e$ 均来自标准正态分布, 彼此独立。
 - **S2:** 从 $S_{0}$ 中随机抽取 $n=50$ 个观察值, 形成一组抽样样本 (Sample), 
-  - 执行 OLS 估计, 记录 $\small \widehat{\beta}$ 和 $\small\operatorname{se}(\widehat{\beta})$
+  - 执行 OLS 估计, 记录 $\widehat{\beta}$ 和 $\small\operatorname{se}(\widehat{\beta})$
   
 - **S3:** 重复第二步 $\small K=1000$ 次，得到 $\small \widehat{\boldsymbol{\beta}}_j = \{\widehat{\beta}_1, \widehat{\beta}_2, \cdots, \widehat{\beta}_K\}$。
 
