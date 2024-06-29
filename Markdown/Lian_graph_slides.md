@@ -354,7 +354,7 @@ graph export "$fig/Anscombe1973_Figs.png", replace width(1200)
   - 数据生成过程 (DGP) 为 $y=10+0.5 x+e$, 
   - 其中, $x$ 和 $e$ 均来自标准正态分布, 彼此独立。
 - **S2:** 从 $S_{0}$ 中随机抽取 $n=50$ 个观察值, 形成一组抽样样本 (Sample), 
-  - 执行 OLS 估计, 记录 $\hat{\beta}$ 和 $\operatorname{se}(\hat{\beta})$
+  - 执行 OLS 估计, 记录 $\hat{\beta}$ 和 ${se}(\hat{\beta})$
   
 - **S3:** 重复第二步 $K=1000$ 次，得到 $\hat{\boldsymbol{\beta}}_j = \{\hat{\beta}_1, \hat{\beta}_2, \cdots, \hat{\beta}_K\}$。
 
@@ -431,7 +431,7 @@ $$\hat{\beta}=\beta+o_{p}(1)$$
 
 **MC 模拟分析：**
 - (1) 随机生成一个包含 $N=$ 100000 个观察值的样本 (视为 “总体”), 记为 $S_{0}$ 。数据生成过程 (DGP) 为 $y=10+0.5 x+e$, 其 中, $x$ 和 $e$ 均来自标准正态分布, 彼此独立。
-- (2) 从 $S_{0}$ 中随机抽取 $n=10$ 个观察值, 视为一组抽样样本 (sample), 执行 OLS 估计, 记录 $\hat{\beta}$ 和 $\operatorname{se}(\hat{\beta})$ 。
+- (2) 从 $S_{0}$ 中随机抽取 $n=10$ 个观察值, 视为一组抽样样本 (sample), 执行 OLS 估计, 记录 $\hat{\beta}$ 和 ${se}(\hat{\beta})$ 。
 - (3) 重复第二步, 但每次抽取的样本数 $n$ 不断增加，$n=10, 20, ..., 30000$。
 
 --- - --
@@ -1316,7 +1316,7 @@ $$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarr
 
 $$
 \begin{aligned}
-Y_{s t}=& \alpha+\beta_{p} \ln \left(1-M T R 90_{s t-3}\right)+\beta_{c} \ln \left(1-\operatorname{Corp} . \mathrm{MTR}_{s t-3}\right) \\
+Y_{s t}=& \alpha+\beta_{p} \ln \left(1-M T R 90_{s t-3}\right)+\beta_{c} \ln \left(1-{Corp} . \mathrm{MTR}_{s t-3}\right) \\
 &+\gamma \mathbb{X}_{s t}+\delta_{t}+\delta_{s}+\varepsilon_{s t} \quad \text{(3)}
 \end{aligned}
 $$
