@@ -341,22 +341,22 @@ graph export "$fig/Anscombe1973_Figs.png", replace width(1200)
 <br>
 
 - 单次抽样具有随机性 (原因？)
-- 然而，如果抽样很多次，如 $K=1000$ 次，取它们的均值，$\small E[\hat{\beta}]$，可以很大程度上消除随机误差的影响
+- 然而，如果抽样很多次，如 $K=1000$ 次，取它们的均值，$E[\hat{\beta}]$，可以很大程度上消除随机误差的影响
   
-- 这个均值应该接近真实值：$\small E[\hat{\beta}]={\beta}_0$
+- 这个均值应该接近真实值：$E[\hat{\beta}]={\beta}_0$
 
 --- - --
 
 ### OLS 的无偏性：模拟分析 - 02
 
 **MC-DGP 过程**
-- **S1:** 随机生成一个包含 $\small N=100000$ 个观察值的样本 (视为 “总体”，Population), 记为 $\small S_{0}$ 。
-  - 数据生成过程 (DGP) 为 $\small y=10+0.5 x+e$, 
+- **S1:** 随机生成一个包含 $N=100000$ 个观察值的样本 (视为 “总体”，Population), 记为 $S_{0}$ 。
+  - 数据生成过程 (DGP) 为 $y=10+0.5 x+e$, 
   - 其中, $x$ 和 $e$ 均来自标准正态分布, 彼此独立。
 - **S2:** 从 $S_{0}$ 中随机抽取 $n=50$ 个观察值, 形成一组抽样样本 (Sample), 
-  - 执行 OLS 估计, 记录 $\widehat{\beta}$ 和 $\small\operatorname{se}(\widehat{\beta})$
+  - 执行 OLS 估计, 记录 $\hat{\beta}$ 和 $\small\operatorname{se}(\hat{\beta})$
   
-- **S3:** 重复第二步 $\small K=1000$ 次，得到 $\small \widehat{\boldsymbol{\beta}}_j = \{\widehat{\beta}_1, \widehat{\beta}_2, \cdots, \widehat{\beta}_K\}$。
+- **S3:** 重复第二步 $K=1000$ 次，得到 $\hat{\boldsymbol{\beta}}_j = \{\hat{\beta}_1, \hat{\beta}_2, \cdots, \hat{\beta}_K\}$。
 
 --- - --
 <!-- backgroundColor: #e6e6fa -->
@@ -417,11 +417,11 @@ forvalues j =1/$K {
 所谓估计量的「一致性」,  
 是指当样本数 $n \rightarrow \infty$ 时, 估计值无限接近于真实值, 表示为 
 
-$$\widehat{\beta} \stackrel{p}{\longrightarrow} \beta$$ 
+$$\hat{\beta} \stackrel{p}{\longrightarrow} \beta$$ 
 
 或 
 
-$$\widehat{\beta}=\beta+o_{p}(1)$$
+$$\hat{\beta}=\beta+o_{p}(1)$$
 
 --- - --
 <!-- backgroundColor: #FFFFF9 -->
@@ -431,7 +431,7 @@ $$\widehat{\beta}=\beta+o_{p}(1)$$
 
 **MC 模拟分析：**
 - (1) 随机生成一个包含 $N=$ 100000 个观察值的样本 (视为 “总体”), 记为 $S_{0}$ 。数据生成过程 (DGP) 为 $y=10+0.5 x+e$, 其 中, $x$ 和 $e$ 均来自标准正态分布, 彼此独立。
-- (2) 从 $S_{0}$ 中随机抽取 $n=10$ 个观察值, 视为一组抽样样本 (sample), 执行 OLS 估计, 记录 $\widehat{\beta}$ 和 $\operatorname{se}(\widehat{\beta})$ 。
+- (2) 从 $S_{0}$ 中随机抽取 $n=10$ 个观察值, 视为一组抽样样本 (sample), 执行 OLS 估计, 记录 $\hat{\beta}$ 和 $\operatorname{se}(\hat{\beta})$ 。
 - (3) 重复第二步, 但每次抽取的样本数 $n$ 不断增加，$n=10, 20, ..., 30000$。
 
 --- - --
@@ -493,7 +493,7 @@ $$
 **Raw:** $\small\qquad\qquad\quad y_{it} = \alpha_i + x_{it}\beta + \varepsilon_{it}$ 
  <!--$D_i = 1\ \text{for firm}\ i$ and $0$ otherwise-->
 
-**De-meaned:** $\small y_{it} -\bar{y}_i= (x_{it}-\bar{x}_i)\beta + (\varepsilon_{it}-\bar{\varepsilon}_i)$
+**De-meaned:** $y_{it} -\bar{y}_i= (x_{it}-\bar{x}_i)\beta + (\varepsilon_{it}-\bar{\varepsilon}_i)$
 
 ![w:750](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/Fig_OLS_FE_01.png)
 
@@ -509,7 +509,7 @@ y_{i t} &=x_{i t} \beta+ {\color{red}{\alpha_{i}}}+\varepsilon_{i t} \qquad (1) 
 \end{aligned}
 $$
 
-> (1) 式和 (2) 式中 $\small \beta$ 的 OLS 估计是等价的
+> (1) 式和 (2) 式中 $\beta$ 的 OLS 估计是等价的
 
 --- - --
 <!-- backgroundColor: #e6e6fa -->
@@ -1226,7 +1226,7 @@ mkdensity $y, over($gg)
 
 --- - --
 
-$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$ $\ \ \Leftrightarrow$ $\ \ \small \tilde{Y}= \tilde{X}_1 {\color{red}{\beta_1}} + v$
+$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$ $\ \ \Leftrightarrow$ $\ \ \tilde{Y}= \tilde{X}_1 {\color{red}{\beta_1}} + v$
 
 ![](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/Lianxh_装饰黄线.png)
 
@@ -1234,10 +1234,10 @@ $\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$ $\ \ \Leftrightarrow$ $\
 `predict eY, res` &rarr; $\small\ \ \ \tilde{Y} = A + {\color{blue}{B}}$
 
 `reg X1 X2` 
-`predict eX1, res` &rarr; $\small \tilde{X}_1 = F + {\color{blue}{B}}$
+`predict eX1, res` &rarr; $\tilde{X}_1 = F + {\color{blue}{B}}$
 ![](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/Lianxh_装饰黄线.png)
 
-`reg eY eX1` &rarr; `dis _b[eX1]` = $\small{\color{red}{\widehat{\beta}_1}}$ &rarr; ${\color{blue}{B}}$
+`reg eY eX1` &rarr; `dis _b[eX1]` = $\small{\color{red}{\hat{\beta}_1}}$ &rarr; ${\color{blue}{B}}$
 
 ![bg left:40% w:400](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/OLS-venn-01.png)
 
@@ -1245,13 +1245,13 @@ $\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$ $\ \ \Leftrightarrow$ $\
 
 --- - --
 
-$$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ \small Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
+$$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
 
 - 事实上，只需从 $X_1$ 中去除  (partial out) $X_2$ 的影响，得到 $\tilde{X}_1$，进而用 $Y$ 对 $\tilde{X}_1$ 进行回归即可。即，如下回归都是等价的：
   
-  - `reg` $\small \tilde{Y}$ on $\small\tilde{X}_1$
-  - `reg` $\small {Y}$ on $\small\tilde{X}_1$
-  - `reg` $\small {Y}$ on $\small{X}_1, {X}_2$
+  - `reg` $\tilde{Y}$ on $\small\tilde{X}_1$
+  - `reg` ${Y}$ on $\small\tilde{X}_1$
+  - `reg` ${Y}$ on $\small{X}_1, {X}_2$
 
 ![bg left:40% w:400](https://fig-lianxh.oss-cn-shenzhen.aliyuncs.com/OLS-venn-01.png)
 
@@ -1259,7 +1259,7 @@ $$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftr
 --- - --
 <!-- backgroundColor: #FFFFF9 -->
 ### 几种典型设定 - 1
-$$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ \small Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
+$$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
 
 - $\small\bf{X_2} = \bf{1}$，去除样本均值 &emsp; `reg y x`
   
@@ -1273,7 +1273,7 @@ $$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftr
 --- - --
 <!-- backgroundColor: #FFFFF9 -->
 ### 几种典型设定 - 2
-$$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ \small Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
+$$Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftrightarrow}} \ \ Y= \tilde{X}_1 {\color{red}{\beta_1}} + v$$
 
 - $\small{\bf{X}}_{{\bf{2}}it} = \alpha_i + \lambda_t$，双向固定效应 &rarr; DID
   - `. reghdfe y x, absorb(id year)` or `xtreg y x i.year, fe`
@@ -1293,10 +1293,10 @@ $$\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u \ \ {\color{blue}{\Leftr
 
 <br>
 
-- **真实模型：** $\small Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$
+- **真实模型：** $Y=X_1 {\color{red}{\beta_1}} + X_2 \beta_2 + u$
 - &#x2753; 如果不控制 $x_2$，即 
-  - `reg Y X1` $\small\iff$ $\small Y = X_1\theta_1 + \underbrace{{\color{red}{\varepsilon}}}_{X_2\beta_2+u}$
-  - $\widehat{\theta}_1 \neq \beta_1$
+  - `reg Y X1` $\small\iff$ $Y = X_1\theta_1 + \underbrace{{\color{red}{\varepsilon}}}_{X_2\beta_2+u}$
+  - $\hat{\theta}_1 \neq \beta_1$
 --- - --
 
 
@@ -1321,11 +1321,11 @@ Y_{s t}=& \alpha+\beta_{p} \ln \left(1-M T R 90_{s t-3}\right)+\beta_{c} \ln \le
 \end{aligned}
 $$
 
-- $\small Y_{s t}$：$s$ 州在 $t$ 时期的创新产出：专利数、引用数、发明人人数等
-- $\small MTR90_{s t-3}$：滞后 3 年期的个人所得税率
-- $\small Corp.MTR_{s t-3}$：滞后 3 年期作为公司所得税
-- $\small \delta_{t}$ 和 $\delta_{s}$：时间和州固定效应，以捕获不可观测的个体和时间趋势效应
-- $\small X_{s t}$ 代表随时间变化的州层级的变量，包括：(滞后 3 期) 的人口密度 (城市化程度)、人均收入 (经济发展)、研发支出抵免 (税收激励)
+- $Y_{s t}$：$s$ 州在 $t$ 时期的创新产出：专利数、引用数、发明人人数等
+- $MTR90_{s t-3}$：滞后 3 年期的个人所得税率
+- $Corp.MTR_{s t-3}$：滞后 3 年期作为公司所得税
+- $\delta_{t}$ 和 $\delta_{s}$：时间和州固定效应，以捕获不可观测的个体和时间趋势效应
+- $X_{s t}$ 代表随时间变化的州层级的变量，包括：(滞后 3 期) 的人口密度 (城市化程度)、人均收入 (经济发展)、研发支出抵免 (税收激励)
 
 --- - --
 
